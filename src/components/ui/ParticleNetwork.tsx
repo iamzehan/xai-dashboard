@@ -221,7 +221,7 @@ export default function ParticleNetwork() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 w-screen opacity-50"
+      className="fixed inset-0 -z-10 w-screen opacity-50 blur-[0.75px]"
     />
   );
 }
