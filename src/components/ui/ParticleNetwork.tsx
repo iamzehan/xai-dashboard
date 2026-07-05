@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/src/hooks";
 import { useEffect, useRef } from "react";
 
 interface Particle {
@@ -18,7 +19,7 @@ interface Particle {
 
 export default function ParticleNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
+  const isMobile = useIsMobile();
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
@@ -41,7 +42,7 @@ export default function ParticleNetwork() {
       y: -9999,
     };
 
-    const PARTICLES = 200;
+    const PARTICLES = isMobile? 50: 150;
     const LINK_DISTANCE = 110;
     const REPULSE_RADIUS = 120;
     const REPULSE_FORCE = 8;
@@ -65,7 +66,8 @@ export default function ParticleNetwork() {
         // const saturation = 20 + Math.random() * 30;
         // const lightness = 25 + Math.random() * 25;
         // const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        const color = "rgb(255,255,255, 0.5)"
+        const opacity = 0.3 + Math.random() * 0.7;
+        const color = `rgba(255, 255, 255, ${opacity})`;
 
         // Generate random size
         const size = 1 + Math.random() * 3;
