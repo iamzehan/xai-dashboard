@@ -132,13 +132,42 @@ h6 {
 }
 
 h1 {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
   font-weight: 700;
 }
 
-h1.extra{
-  font-size: 4.5rem;
+@media (min-width: 640px) {
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+h1.extra {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  h1.extra {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.extra {
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
 }
 
 h2 {
@@ -172,6 +201,62 @@ h6 {
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  p {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@keyframes revolving-border {
+  0% {
+    box-shadow: 
+      0 0 0 2px rgba(59, 130, 246, 0),
+      40px 0 0 -30px rgba(59, 130, 246, 1),
+      28px 28px 0 -30px rgba(59, 130, 246, 0.8),
+      0 40px 0 -30px rgba(59, 130, 246, 0.6);
+  }
+  25% {
+    box-shadow: 
+      0 0 0 2px rgba(59, 130, 246, 0),
+      0 40px 0 -30px rgba(59, 130, 246, 1),
+      -28px 28px 0 -30px rgba(59, 130, 246, 0.8),
+      -40px 0 0 -30px rgba(59, 130, 246, 0.6);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px rgba(59, 130, 246, 0),
+      -40px 0 0 -30px rgba(59, 130, 246, 1),
+      -28px -28px 0 -30px rgba(59, 130, 246, 0.8),
+      0 -40px 0 -30px rgba(59, 130, 246, 0.6);
+  }
+  75% {
+    box-shadow: 
+      0 0 0 2px rgba(59, 130, 246, 0),
+      0 -40px 0 -30px rgba(59, 130, 246, 1),
+      28px -28px 0 -30px rgba(59, 130, 246, 0.8),
+      40px 0 0 -30px rgba(59, 130, 246, 0.6);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 2px rgba(59, 130, 246, 0),
+      40px 0 0 -30px rgba(59, 130, 246, 1),
+      28px 28px 0 -30px rgba(59, 130, 246, 0.8),
+      0 40px 0 -30px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.btn-outline-hover:hover {
+  animation: revolving-border 2s linear infinite !important;
 }
