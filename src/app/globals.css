@@ -106,7 +106,6 @@
     --font-heading: var(--font-sora);
   }
 }
-
 html {
   font-family: var(--font-body);
 }
@@ -120,8 +119,12 @@ body {
   font-family: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-
+header{
+  margin: 0;
+  padding: 0;
+}
 h1,
 h2,
 h3,
