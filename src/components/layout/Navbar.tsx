@@ -20,7 +20,7 @@ export const NavBar = React.forwardRef<HTMLElement, NavBarProps>(
         ref={ref}
         className={cn("fixed inset-x-0 top-0 z-50 py-5", className)}
       >
-        <Container className="p-0! h-auto!">
+        <Container className="p-0! h-auto! min-w-full">
           <nav className="flex items-center justify-between border-b border-(--color-border) bg-surface/70 px-6 py-4 backdrop-blur-xl">
             <a href="#hero" className="text-xl font-bold tracking-tight">
               <Logo/>
