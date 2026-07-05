@@ -27,9 +27,11 @@ const buttonVariants = cva(
         primary: [
           "bg-[var(--color-primary)]",
           "text-white",
+          "hover:text-[var(--color-primary)]",
           "hover:bg-[var(--color-primary-hover)]",
-          "active:scale-[0.98]",
-          "shadow-lg shadow-[var(--color-primary)]/20",
+          "hover:shadow-lg shadow-blue-500/50",
+          "border border-[var(--color-primary)]",
+          "active:scale-[0.98]"
         ],
 
         secondary: [
@@ -87,7 +89,11 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={cn(buttonVariants({ variant, size }), className)}
+      className={cn(
+        buttonVariants({ variant, size }), 
+        variant === "outline" && "btn-outline-hover",
+        className
+      )}
       {...props}
     />
   );
