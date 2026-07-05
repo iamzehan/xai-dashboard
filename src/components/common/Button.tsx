@@ -1,19 +1,17 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-// lightweight className helper to avoid depending on external utils
-function cn(...inputs: Array<string | false | null | undefined>) {
-  return inputs.filter(Boolean).join(" ");
-}
+import { cn } from "@/src/lib/cn";
+import { useTouchRipple } from "@/src/hooks/useTouchRipple";
 
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center",
     "rounded-xl",
     "font-medium",
-    "transition-all duration-300",
     "cursor-pointer",
     "select-none",
     "outline-none",
+    "transition-[background-color,color,border-color,box-shadow] duration-300",
     "disabled:pointer-events-none",
     "disabled:opacity-50",
     "focus-visible:ring-2",
@@ -81,20 +79,41 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export function Button({
-  className,
-  variant,
-  size,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cn(
-        buttonVariants({ variant, size }), 
-        variant === "outline" && "btn-outline-hover",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      onTouchStart,
+      onPointerDown,
+      ...props
+    },
+    ref
+  ) => {
+    const ripple  = useTouchRipple();
+
+    return (
+      <button
+        {...props}
+        ref={ref}
+        onTouchStart={(e) => {
+          ripple.onTouchStart(e);
+          onTouchStart?.(e);
+        }}
+        onPointerDown={(e) => {
+          ripple.onPointerDown(e);
+          onPointerDown?.(e);
+        }}
+        className={cn(
+          "relative overflow-hidden active:scale-95!",
+          buttonVariants({ variant, size }),
+          variant === "outline" && "btn-outline-hover",
+          className
+        )}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
