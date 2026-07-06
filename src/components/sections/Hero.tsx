@@ -65,17 +65,17 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={heroRef} id="hero" className="relative min-h-screen w-full mt-10">
+    <section ref={heroRef} id="hero" className="relative min-h-screen w-full mt-10 contain-content">
       {/* Particle background */}
       <ParticleNetwork />
 
       <div
-        className="hero-text absolute z-10 flex h-screen w-screen flex-col
+        className="hero-text absolute z-10 flex h-full w-screen flex-col
         items-center justify-center gap-8 px-4 sm:gap-10 sm:px-6 lg:gap-15 lg:px-0"
       >
         {/* Badge */}
         <div ref={badgeRef}>
-          <Status text="INTELLIGENCE WORKSPACE" status="Active" />
+          <Status text="INTELLIGENCE WORKSPACE" status="Active"/>
         </div>
 
         {/* Headings */}
