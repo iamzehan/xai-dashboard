@@ -44,7 +44,7 @@ export default function ParticleNetwork() {
 
     const PARTICLES = isMobile? 50: 150;
     const LINK_DISTANCE = 110;
-    const REPULSE_RADIUS = 120;
+    const REPULSE_RADIUS = 170;
     const REPULSE_FORCE = 8;
     const SPRING = 0.005;
     const DAMPING = 0.5;
@@ -66,11 +66,11 @@ export default function ParticleNetwork() {
         // const saturation = 20 + Math.random() * 30;
         // const lightness = 25 + Math.random() * 25;
         // const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        const opacity = 0.3 + Math.random() * 0.7;
+        const opacity = 0.3 + Math.random() * 3;
         const color = `rgba(255, 255, 255, ${opacity})`;
 
         // Generate random size
-        const size = 1 + Math.random() * 3;
+        const size = 1 + Math.random() * 0.5;
 
         particles.push({
           x,
@@ -223,7 +223,7 @@ export default function ParticleNetwork() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 w-screen opacity-50 blur-[0.75px]"
+      className="fixed inset-0 -z-10 w-screen opacity-10 blur-[0.75px]"
     />
   );
 }
